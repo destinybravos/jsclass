@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Class 4</title>
+    <style>
+        /* Tab Styles */
+        #container{
+            max-width: 500px;
+            min-height: 300px;
+            background-color: lightgray;
+            margin: 20vh auto;
+            box-shadow: 1px 2px 2px rgb(114, 112, 112);
+        }
+        .watch-divs{
+            width: auto;
+            min-height: inherit;
+            background-color: antiquewhite;
+            padding: 15px;
+        }
+        .btn{
+            padding: 10px 20px;
+            border-top: 1px solid rgba(17, 17, 17, 0.425);
+            border-left: 1px solid rgba(17, 17, 17, 0.425);
+            border-right: 1px solid rgba(17, 17, 17, 0.425);
+            border-bottom: none;
+            cursor: pointer;
+        }
+        .active{
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(17, 17, 17, 0.425);
+        }
+        .hidden{
+            display: none;
+        }
+
+        /* Watch Styles */
+        .circle{
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            margin: auto;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .screen{
+            height: 70px;
+            width: inherit;
+            border-radius: 10px;
+            background-color: aliceblue;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="container">
+        <!-- Tab Buttons -->
+        <div>
+            <button class="btn" id="btnDw">Digital Watch</button>
+            <button class="btn" id="btnSw">Stop Watch</button>
+        </div>
+        <!-- Digital Watch -->
+        <div id="dwDiv" class="watch-divs">
+            <div class="circle">
+                <div class="screen">
+                    <span id="digital_clock">00:00:00</span>
+                </div>
+            </div>
+        </div>
+        <!-- Stop Watch Div -->
+        <div id="swDiv" class="watch-divs hidden">
+            <div class="circle">
+                <div class="screen">
+                    <span id="stop_watch">00:00:00</span>
+                </div>
+            </div>
+            <div>
+                <button id="startW">Start</button>
+                <button id="stopW">Stop</button>
+                <button id="resetW">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // References to HTML Element and assigning them to variable
+        let stopWatchDiv = document.getElementById('swDiv');
+        let digitalWatchDiv = document.getElementById('dwDiv');
+        let digitalBtn = document.getElementById('btnDw');
+        let stopBtn = document.getElementById('btnSw');
+
+        // Set the first tab as active tab(button) by adding the active class to it.
+        digitalBtn.classList.add('active');
+
+        // Set Event Listeners for the Digital Watch Button
+        digitalBtn.addEventListener('click', function(){
+            // Switch Active class between the two tabs(buttons)
+            digitalBtn.classList.add('active');
+            stopBtn.classList.remove('active');
+            // Switch Hidden class between the two watch divs
+            digitalWatchDiv.classList.remove('hidden');
+            stopWatchDiv.classList.add('hidden');
+        });
+
+        // Set Event Listeners for the Stop Watch Button
+        stopBtn.addEventListener('click', function(){
+            stopBtn.classList.add('active');
+            digitalBtn.classList.remove('active');
+            // Switch Hidden class between the two watch divs
+            stopWatchDiv.classList.remove('hidden');
+            digitalWatchDiv.classList.add('hidden');
+        });
+
+        // Digital Watch Scripts
+        setInterval(()=>{
+            let today = new Date();
+            let currentTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+            document.getElementById('digital_clock').innerText = currentTime;
+        }, 1);
+
+        // Stop Watch Script
+        let stopWatchInterval = '';
+
+        let startStopWatch = () => {
+            stopWatchInterval = setInterval(()=>{
+                let today = new Date();
+                let currentTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ':' + today.getMilliseconds();
+                document.getElementById('stop_watch').innerText = currentTime;
+            }, 1);
+        }
+
+        let stopStopWatch = () => {
+            clearInterval(stopWatchInterval);
+        }
+
+        let resetStopWatch = () => {
+            document.getElementById('stop_watch').innerText = '00:00:00';
+        }
+
+        // Add event listener to start stop watch button
+        document.getElementById('startW').addEventListener('click', ()=>{
+            startStopWatch();
+        })
+        // Add event listener to stop stop watch button
+        document.getElementById('stopW').addEventListener('click', ()=>{
+            stopStopWatch();
+        })
+        // Add event listener to reset stop watch button
+        document.getElementById('resetW').addEventListener('click', ()=>{
+            resetStopWatch();
+        })
+    </script>
+</body>
+</html>
