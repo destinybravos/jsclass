@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.hidden{
+    display: none;
+}
+
+body{
+    background-color: azure;
+}
+
+#counter_div{
+    max-width: 90%;
+    width: 500px;
+    min-height: 300px;
+    margin: 20vh auto;
+    background-color: white;
+    box-shadow: 0 0 5px #DDD;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#counter_div h2, #counter_div h1, #counter_div div{
+    margin-bottom: 16px;
+}
+#counter_div h2{
+    margin-bottom: 16px;
+    font-size: 2rem;
+}
+#counter_div h1{
+    margin-bottom: 16px;
+    font-size: 4rem;
+    color: darkgreen;
+}
+#counter_div button{
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+/* Sidemenu */
+#sidemenu{
+    position: fixed;
+    top: 0;
+    background-color: white;
+    box-shadow: 0 0 5px #DDD;
+    height: 100vh;
+    width: 250px;
+    left: -250px;
+    transition: all ease-in-out 0.5s;
+}
+
+.open{
+    left:0 !important;
+}

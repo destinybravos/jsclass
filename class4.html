@@ -133,7 +133,7 @@
         let startStopWatch = () => {
             stopWatchInterval = setInterval(()=>{
                 let today = new Date();
-                let currentTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ':' + today.getMilliseconds();
+                let currentTime = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ':' + Math.round(today.getMilliseconds() / 10);
                 document.getElementById('stop_watch').innerText = currentTime;
             }, 1);
         }
