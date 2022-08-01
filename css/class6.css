@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: aliceblue;
+}
+
+#card{
+    max-width: 90%;
+    width: 500px;
+    min-height: 300px;
+    margin: 20vh auto;
+    background-color: white;
+    box-shadow: 0 0 5px #DDD;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#ui_list li{
+    display: flex;
+}
+#ui_list li span{
+    flex-grow: 1;
+}
+#ui_list li button{
+    flex-grow: 0;
+    padding: 2px 5px;
+    border: none;
+}
+.btnEdit{
+    background-color: darkgreen;
+    color: white;
+}
+.btnDel{
+    background-color: red;
+    color: white;
+}
