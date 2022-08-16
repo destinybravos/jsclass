@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Forms</title>
+</head>
+<body>
+    
+    <form action="test.php" method="post" enctype="application/x-www-form-urlencoded" name="frm_test">
+        <input type="file" name="file"  id="file" multiple> <br>
+        <input type="text" name="text" id="text" required value="Hello My People" readonly> <br>
+        <input type="email" name="email" id="email" placeholder="Enter your email" > <br>
+        <input type="tel" name="tel" id="tel" > <br>
+        <input type="date" name="date" id="date" > <br>
+        <input type="time" name="time" id="time" > <br>
+    
+        <div style="margin: 20px auto;">
+            <input type="radio" name="gender" id="" value="male" selected> Male 
+            <input type="radio" name="gender" id="" value="female"> Female 
+        </div>
+
+        <div style="margin: 20px auto;">
+            <input type="checkbox" name="hobies" id="" value="swim"> Swimming 
+            <input type="checkbox" name="hobies" id="" value="sing"> Singing 
+        </div>
+
+        <select name="" id="" required>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorce">Divorced</option>
+            <option value="complicated">Complicated</option>
+        </select> 
+        <br>
+
+        <textarea name="note" id="" placeholder="Write Somthing"></textarea> <br>
+
+        <input type="reset" value="Reset Form">
+
+        <button type="submit">
+            Submit
+        </button>
+    </form>
+
+    <form action="" name="charles"></form>
+
+
+    <script>
+        // let allForm = document.forms;
+        // console.log(allForm);
+
+
+        let myform = document.forms['frm_test'];
+        let textInput = document.forms['frm_test']['text'].value // using document context
+        let gender = myform['gender'].value // using the myform variable
+        let hobies = myform['hobies'].value 
+
+        console.log(hobies);
+        
+    </script>
+
+</body>
+</html>
