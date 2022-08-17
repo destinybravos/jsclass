@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.auth_screen{
+    background-color: teal;
+    min-height: 100vh;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div_form{
+    background-color: #f2f2f2;
+    box-shadow: 0 0 3px #333;
+    max-width: 90%;
+    width: 450px;
+    margin: auto;
+    min-height: 200px;
+    border-radius: 10px;
+}
+
+/* Form and Input Designs */
+.input-group{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.form-input{
+    height: 1.7rem;
+}
+.btn{
+    padding: 6px 10px;
+}
+.error_span{
+    font-size: 0.8rem;
+    color: red;
+    font-style: italic;
+}
