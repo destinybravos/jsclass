@@ -70,3 +70,61 @@ document.getElementById('toggle_btn').addEventListener('click', () => {
         document.getElementById('toggle_btn').innerHTML = '<i class="fas fa-eye"></i>';
     }
 });
+
+// xhr = new XMLHttpRequest(); // Ajax(Asynchronous JavaScript and XML)
+// Sample HTTP Request
+fetch('http://localhost/jsclass/forum/api/allusers.php')
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+    })
+
+// Registration Process
+document.forms['frm_register'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    // Get the user data from the form
+    let username = document.forms['frm_register']['username'].value;
+    let email = document.forms['frm_register']['email'].value;
+    let password = document.forms['frm_register']['password'].value;
+
+    // Create an object
+    let credential = {
+        username: username,
+        email: email,
+        password: password
+    }
+    
+    // Set Header Object for the request
+    let headers = {
+        'Accept': 'application/json',
+        // 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
+
+    // Syntax: fetch(url, object)
+    // Object: {method: 'POST', body: data, headers: headers}
+
+    // Send the request to the api
+    fetch('http://localhost/jsclass/forum/api/adduser.php', {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(credential)
+            })
+    .then((res) => res.json())
+    .then((data) => {
+        if(data.status == true){
+            document.getElementById('response_msg').style.color = 'green';
+            document.getElementById('response_msg').innerText = data.message;
+            document.forms['frm_register'].reset();
+            setTimeout(() => {
+                location.href = 'login.html';
+            }, 3000);
+        }else{
+            document.getElementById('response_msg').style.color = 'red';
+            document.getElementById('response_msg').innerText = data.message;
+        }
+    })
+    .catch((error) => {
+        document.getElementById('response_msg').style.color = 'red';
+        document.getElementById('response_msg').innerText = error;
+    });
+});
